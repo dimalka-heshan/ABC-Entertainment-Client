@@ -33,7 +33,7 @@ const AddAlbumForm = ({ onHide }) => {
     GetAllGenres();
   }, []);
 
-  const addAlbum = async (status) => {
+  const addAlbum = async () => {
     await axios
       .post(`http://localhost:8080/api/v1/album/create`, {
         title: title,
@@ -118,7 +118,7 @@ const AddAlbumForm = ({ onHide }) => {
 
           <hr />
 
-          <button type="submit" className="btn btn-primary btn-block mb-4" onClick={addAlbum}>
+          <button style={{background:"#28282B"}} type="submit" className="btn btn-primary btn-block mb-4" onClick={addAlbum}>
             PUBLISH
           </button>
         </div>

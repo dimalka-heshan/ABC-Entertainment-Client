@@ -6,12 +6,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import Popupform from "./popup/Popupform";
-import ViewAlbum from "./popup/ViewAlbum";
 import EditAlbumForm from "./popup/EditAlbumForm";
+
 
 const PopupMenu = ({ anchorEl, menuClose, open, id }) => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -25,7 +24,8 @@ const PopupMenu = ({ anchorEl, menuClose, open, id }) => {
           if (res.data.success) {
             console.log(res.data.message);
             alert(res.data.message);
-            window.location.href = "/";
+            
+            window.location.href = "/AlbumManager";
           }
         })
         .catch((err) => {
@@ -66,7 +66,7 @@ const PopupMenu = ({ anchorEl, menuClose, open, id }) => {
       <Popupform
         show={show}
         onHide={handleClose}
-        title={"View Question"}
+        title={"Edit Album"}
         body={<EditAlbumForm id={id} />}
       />
     </div>

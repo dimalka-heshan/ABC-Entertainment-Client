@@ -3,6 +3,7 @@ import Table from "../components/Table";
 import axios from "axios";
 import Button from "../components/button/Button";
 import { AiFillPlusCircle } from "react-icons/ai";
+import HomeIcon from '@mui/icons-material/Home';
 import { BsThreeDots } from "react-icons/bs";
 import Popupform from "../components/popup/Popupform";
 import PopupMenu from "../components/PopupMenu";
@@ -32,7 +33,6 @@ const AlbumManager = () => {
     await axios
       .get("http://localhost:8080/api/v1/album/")
       .then((res) => {
-        console.log(res.data.albums);
         if (res.data.success) {
           const allAlbums = res.data.albums;
           setAlbums(allAlbums);
@@ -108,7 +108,7 @@ const AlbumManager = () => {
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
-              onClick={(event, id) => handleClick(event, params.row.id)}
+              onClick={(event, id) => handleClick(event, params.row._id)}
             />
             <PopupMenu
               anchorEl={anchorEl}
@@ -123,8 +123,9 @@ const AlbumManager = () => {
   ];
   return (
     <div className="setBody">
+
       <div className="faq">
-        <span>ABC Entertainments</span>
+      <span >ABC Entertainments</span>
       </div>
 
       <div className="search-container">

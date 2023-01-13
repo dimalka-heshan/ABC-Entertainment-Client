@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
 
-const EditAlbumForm = ({ onHide }) => {
+const EditAlbumForm = ({ onHide, id }) => {
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [genre, setGenre] = useState("");
   const [releaseDate, setReleaseDate] = useState("");
   const [genres, setGenres] = useState([]);
+  const [album, setAlbum] = useState({});
+
   // const [error, setError] = useState({
   //   question: "",
   //   category: "",
@@ -19,7 +19,6 @@ const EditAlbumForm = ({ onHide }) => {
     await axios
       .get("http://localhost:8080/api/v1/genre/")
       .then((res) => {
-        console.log(res.data.genres);
         if (res.data.success) {
           const allgenres = res.data.genres;
           setGenres(allgenres);
@@ -29,13 +28,30 @@ const EditAlbumForm = ({ onHide }) => {
         console.error(err);
       });
   };
+
+    //Get All Genres
+    const GetAlbem = async (id) => {
+        await axios
+          .get(`http://localhost:8080/api/v1/album/${id}`)
+          .then((res) => {
+            if (res.data.success) {
+              const albm = res.data.album;
+              setAlbum(albm);
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      };
+
   useEffect(() => {
     GetAllGenres();
+    GetAlbem(id);
   }, []);
 
-  const addAlbum = async (status) => {
+  const editAlbum = async () => {
     await axios
-      .post(`http://localhost:8080/api/v1/album/create`, {
+      .patch(`http://localhost:8080/api/v1/album/${album._id}`, {
         title: title,
         artist: artist,
         genre: genre,
@@ -44,8 +60,8 @@ const EditAlbumForm = ({ onHide }) => {
       .then((res) => {
         console.log(res);
         if (res.data.success) {
-          alert("Album added successfully");
-          window.location.href = "/";
+          alert("Album Updated successfully");
+          window.location.href = "/AlbumManager";
         }
       })
       .catch((err) => {
@@ -64,11 +80,11 @@ const EditAlbumForm = ({ onHide }) => {
               type="text"
               className="form-control"
               placeholder="Album Title"
-              value={title}
+              defaultValue={album.title}
               onChange={(e) => setTitle(e.target.value)}
               required
             />
-            <label for="floatingInput">Album Title</label>
+            <label>Album Title</label>
           </div>
 
           <div className="form-floating mb-3">
@@ -78,11 +94,11 @@ const EditAlbumForm = ({ onHide }) => {
               type="text"
               className="form-control"
               placeholder="Album Artist"
-              value={artist}
               onChange={(e) => setArtist(e.target.value)}
+              defaultValue={album.artist}
               required
             />
-            <label for="floatingInput">Album Artist</label>
+            <label>Album Artist</label>
           </div>
 
           <div className="form-outline mb-3">
@@ -96,7 +112,7 @@ const EditAlbumForm = ({ onHide }) => {
               name="size"
               onChange={(e) => setGenre(e.target.value)}
             >
-              <option selected>{genre}</option>
+              <option selected>{album.genre}</option>
               {genres.map((genres) => (
                 <option value={genres.genre} key={genres._id}>
                   {genres.genre}
@@ -112,16 +128,16 @@ const EditAlbumForm = ({ onHide }) => {
               type="date"
               className="form-control"
               placeholder="Release Date"
-              value={releaseDate}
+              defaultValue={album.releaseDate}
               onChange={(e) => setReleaseDate(e.target.value)}
               required
             />
-            <label for="floatingInput">Release Date</label>
+            <label>Release Date</label>
           </div>
 
           <hr />
 
-          <button type="submit" className="btn btn-primary btn-block mb-4" onClick={addAlbum}>
+          <button style={{background:"#28282B"}} type="submit" className="btn btn-primary btn-block mb-4" onClick={editAlbum}>
             PUBLISH
           </button>
         </div>
