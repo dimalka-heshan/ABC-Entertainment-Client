@@ -4,7 +4,6 @@ import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import AlbumIcon from "@mui/icons-material/Album";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -47,7 +46,7 @@ export default function LandingPage() {
   //Get All Albums
   const GetAllAlbums = async () => {
     await axios
-      .get("http://localhost:8080/api/v1/album/")
+      .get("/album/")
       .then((res) => {
         if (res.data.success) {
           const allAlbums = res.data.albums;

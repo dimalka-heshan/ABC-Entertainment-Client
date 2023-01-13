@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { GrFormView } from "react-icons/gr";
 import { AiFillEdit } from "react-icons/ai";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -19,7 +18,7 @@ const PopupMenu = ({ anchorEl, menuClose, open, id }) => {
   const onDelete = async (id) => {
     if (window.confirm("Are you sure! You need to delete this album?")) {
       await axios
-        .delete(`http://localhost:8080/api/v1/album/${id}`)
+        .delete(`/album/${id}`)
         .then((res) => {
           if (res.data.success) {
             console.log(res.data.message);

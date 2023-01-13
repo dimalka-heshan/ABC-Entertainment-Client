@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Table from "../components/Table";
+import Table from "../../components/Table";
 import axios from "axios";
-import Button from "../components/button/Button";
+import Button from "../../components/button/Button";
 import { AiFillPlusCircle } from "react-icons/ai";
-import HomeIcon from '@mui/icons-material/Home';
 import { BsThreeDots } from "react-icons/bs";
-import Popupform from "../components/popup/Popupform";
-import PopupMenu from "../components/PopupMenu";
-import AddAlbumForm from "../components/popup/AddAlbumForm";
+import Popupform from "../../components/popup/Popupform";
+import PopupMenu from "../../components/PopupMenu";
+import AddAlbumForm from "../../components/popup/AddAlbumForm";
 import "./AlbumManager.css";
 
 const AlbumManager = () => {
@@ -31,7 +30,7 @@ const AlbumManager = () => {
   //Get All Albums
   const GetAllAlbums = async () => {
     await axios
-      .get("http://localhost:8080/api/v1/album/")
+      .get("/album/")
       .then((res) => {
         if (res.data.success) {
           const allAlbums = res.data.albums;
@@ -46,7 +45,6 @@ const AlbumManager = () => {
     GetAllAlbums();
   }, []);
 
-
   const filterData = (Albums, searchKey) => {
     const result = Albums.filter(
       (Albums) =>
@@ -59,7 +57,7 @@ const AlbumManager = () => {
 
   const handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value.toLowerCase();
-    axios.get("http://localhost:8080/api/v1/album/").then((res) => {
+    axios.get("/album/").then((res) => {
       if (res.data.success) {
         filterData(res.data.albums, searchKey);
       }
@@ -72,7 +70,7 @@ const AlbumManager = () => {
       field: "#",
       headerName: "#",
       sortable: true,
-      renderCell: (index) => index.api.getRowIndex(index.row.id) + 1,
+      renderCell: (index) => index.api.getRowIndex(index.row._id) + 1,
     },
     {
       field: "title",
@@ -123,15 +121,14 @@ const AlbumManager = () => {
   ];
   return (
     <div className="setBody">
-
       <div className="faq">
-      <span >ABC Entertainments</span>
+        <span>ABC Entertainments</span>
       </div>
 
       <div className="search-container">
-      <div className="albums">
-        <span>Albums </span>
-      </div>
+        <div className="albums">
+          <span>Albums </span>
+        </div>
         <input
           type="search"
           className="search-input"

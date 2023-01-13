@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
 
 const AddAlbumForm = ({ onHide }) => {
@@ -17,7 +15,7 @@ const AddAlbumForm = ({ onHide }) => {
   //Get All Genres
   const GetAllGenres = async () => {
     await axios
-      .get("http://localhost:8080/api/v1/genre/")
+      .get("/genre/")
       .then((res) => {
         console.log(res.data.genres);
         if (res.data.success) {
@@ -35,7 +33,7 @@ const AddAlbumForm = ({ onHide }) => {
 
   const addAlbum = async () => {
     await axios
-      .post(`http://localhost:8080/api/v1/album/create`, {
+      .post(`/album/create`, {
         title: title,
         artist: artist,
         genre: genre,

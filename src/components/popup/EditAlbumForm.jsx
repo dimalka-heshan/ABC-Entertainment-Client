@@ -9,15 +9,10 @@ const EditAlbumForm = ({ onHide, id }) => {
   const [genres, setGenres] = useState([]);
   const [album, setAlbum] = useState({});
 
-  // const [error, setError] = useState({
-  //   question: "",
-  //   category: "",
-  // });
-
   //Get All Genres
   const GetAllGenres = async () => {
     await axios
-      .get("http://localhost:8080/api/v1/genre/")
+      .get("/genre/")
       .then((res) => {
         if (res.data.success) {
           const allgenres = res.data.genres;
@@ -30,9 +25,9 @@ const EditAlbumForm = ({ onHide, id }) => {
   };
 
     //Get All Genres
-    const GetAlbem = async (id) => {
+    const GetAlbem = async () => {
         await axios
-          .get(`http://localhost:8080/api/v1/album/${id}`)
+          .get(`/album/${id}`)
           .then((res) => {
             if (res.data.success) {
               const albm = res.data.album;
@@ -46,12 +41,12 @@ const EditAlbumForm = ({ onHide, id }) => {
 
   useEffect(() => {
     GetAllGenres();
-    GetAlbem(id);
+    GetAlbem();
   }, []);
 
   const editAlbum = async () => {
     await axios
-      .patch(`http://localhost:8080/api/v1/album/${album._id}`, {
+      .patch(`/album/${album._id}`, {
         title: title,
         artist: artist,
         genre: genre,
