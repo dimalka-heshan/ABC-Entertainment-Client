@@ -3,7 +3,7 @@ import axios from "axios";
 //const moment = require("moment");
 
 const ViewAlbum = ({ id }) => {
-  const [album, setAlbum] = useState("");
+  const [album, setAlbum] = useState([]);
 
   const GetSpecificAlbum = async () => {
     await axios

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { TiTickOutline } from "react-icons/ti";
 import { GrFormView } from "react-icons/gr";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";

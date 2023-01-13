@@ -12,7 +12,6 @@ import "./AlbumManager.css";
 const AlbumManager = () => {
   const [Albums, setAlbums] = useState([]);
   const [show, setShow] = useState(false);
-  const [searchKey, setSearchKey] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
   const [id, setId] = useState("");
 
