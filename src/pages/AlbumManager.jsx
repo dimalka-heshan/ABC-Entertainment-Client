@@ -94,61 +94,6 @@ const AlbumManager = () => {
       headerName: "Release Date",
       width: 250,
     },
-    // {
-    //   field: "status",
-    //   headerName: "Status",
-    //   width: 300,
-    //   align: "center",
-    //   headerAlign: "center",
-    //   renderCell: (params) => {
-    //     return (
-    //       <div>
-    //         {params.row.status === "Published" ? (
-    //           <div
-    //             style={{
-    //               backgroundColor: "green",
-    //               color: "black",
-    //               padding: "5px",
-    //               borderRadius: "5px",
-    //               width: "80px",
-    //               textAlign: "center",
-    //             }}
-    //           >
-    //             Published
-    //           </div>
-    //         ) : params.row.status === "Draft" ? (
-    //           <div
-    //             style={{
-    //               backgroundColor: "gray",
-    //               color: "black",
-    //               padding: "5px",
-    //               borderRadius: "5px",
-    //               width: "80px",
-    //               textAlign: "center",
-    //             }}
-    //           >
-    //             Draft
-    //           </div>
-    //         ) : params.row.status === "Disabled" ? (
-    //           <div
-    //             style={{
-    //               backgroundColor: "red",
-    //               color: "black",
-    //               padding: "5px",
-    //               borderRadius: "5px",
-    //               width: "80px",
-    //               textAlign: "center",
-    //             }}
-    //           >
-    //             Disabled
-    //           </div>
-    //         ) : (
-    //           ""
-    //         )}
-    //       </div>
-    //     );
-    //   },
-    // },
     {
       field: "id",
       headerName: "Action",
@@ -194,7 +139,7 @@ const AlbumManager = () => {
         />
         <Button
           text={"Add New Album"}
-          icon={<AiFillPlusCircle size={28} />}
+          icon={<AiFillPlusCircle size={26} />}
           onClick={handleShow}
         />
       </div>
@@ -221,7 +166,7 @@ const AlbumManager = () => {
       <Popupform
         show={show}
         onHide={handleClose}
-        title={"Add New Question"}
+        title={"ADD NEW ALBUM"}
         body={<AddAlbumForm onHide={handleClose} />}
       />
       <br />

@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
+import "./AddAlbum.css";
 
-const AddAlbumForm = ({ onHide }) => {
+function AddAlbum() {
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [genre, setGenre] = useState("");
   const [releaseDate, setReleaseDate] = useState("");
   const [genres, setGenres] = useState([]);
-  // const [error, setError] = useState({
-  //   question: "",
-  //   category: "",
-  // });
 
   //Get All Genres
   const GetAllGenres = async () => {
@@ -54,7 +49,25 @@ const AddAlbumForm = ({ onHide }) => {
   };
 
   return (
-
+    <div
+      className="card shadow-5-strong"
+      style={{
+        alignSelf: "center",
+        justifyContent: "center",
+        width: "50%",
+        marginTop: "30px",
+        background: "hsla(0, 0%, 100%, 0.8)",
+        backdropFilter: ` blur(20px)`,
+        marginLeft: "24rem",
+        boxShadow:
+          "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+      }}
+    >
+      <center>
+        <h2 className="fw-bold mt-3" style={{ color: "gray" }}>
+          ADD ALBUM
+        </h2>
+      </center>
       <form name="form">
         <div style={{ padding: "30px 30px 20px" }}>
           <div className="form-floating mb-3">
@@ -107,7 +120,7 @@ const AddAlbumForm = ({ onHide }) => {
             <input
               id="floatingInput"
               name="AlbumTitle"
-              type="date"
+              type="text"
               className="form-control"
               placeholder="Release Date"
               onChange={(e) => setReleaseDate(e.target.value)}
@@ -119,13 +132,13 @@ const AddAlbumForm = ({ onHide }) => {
           <hr />
 
           <button type="submit" className="btn btn-primary btn-block mb-4" onClick={addAlbum}>
-            PUBLISH
+            ADD ROOM
           </button>
         </div>
         <div className="col"></div>
       </form>
-
+    </div>
   );
-};
+}
 
-export default AddAlbumForm;
+export default AddAlbum;

@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
-const AddAlbumForm = ({ onHide }) => {
+const EditAlbumForm = ({ onHide }) => {
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [genre, setGenre] = useState("");
@@ -64,6 +64,7 @@ const AddAlbumForm = ({ onHide }) => {
               type="text"
               className="form-control"
               placeholder="Album Title"
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
             />
@@ -77,6 +78,7 @@ const AddAlbumForm = ({ onHide }) => {
               type="text"
               className="form-control"
               placeholder="Album Artist"
+              value={artist}
               onChange={(e) => setArtist(e.target.value)}
               required
             />
@@ -94,7 +96,7 @@ const AddAlbumForm = ({ onHide }) => {
               name="size"
               onChange={(e) => setGenre(e.target.value)}
             >
-              <option selected>Select Genre</option>
+              <option selected>{genre}</option>
               {genres.map((genres) => (
                 <option value={genres.genre} key={genres._id}>
                   {genres.genre}
@@ -110,6 +112,7 @@ const AddAlbumForm = ({ onHide }) => {
               type="date"
               className="form-control"
               placeholder="Release Date"
+              value={releaseDate}
               onChange={(e) => setReleaseDate(e.target.value)}
               required
             />
@@ -128,4 +131,4 @@ const AddAlbumForm = ({ onHide }) => {
   );
 };
 
-export default AddAlbumForm;
+export default EditAlbumForm;

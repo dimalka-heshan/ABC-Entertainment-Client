@@ -30,19 +30,21 @@
   justify-content: right;
   background-color: white;
   border-radius: 10px;
-  padding: 15px 20px;
-  margin: 20px 0px;
+  padding: 5px 20px;
+  margin: 50px 0px 0px 0px;
 }
 
 .search-input {
   width: 20%;
   border-radius: 8px;
   background-color: #e8eaf6;
-  padding: 15px;
+  padding: 8px 20px;
   border: 1px solid #e8eaf6;
   outline: none;
   font-size: 14px;
-  margin-right: 20px;
+  margin-right: 30px;
+  margin: 5px 25px 5px 5px;
+
 }
 
 .search-input-button {

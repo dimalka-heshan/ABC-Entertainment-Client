@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { GrFormView } from "react-icons/gr";
+import { AiFillEdit } from "react-icons/ai";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import Popupform from "./popup/Popupform";
 import ViewAlbum from "./popup/ViewAlbum";
+import EditAlbumForm from "./popup/EditAlbumForm";
 
 const PopupMenu = ({ anchorEl, menuClose, open, id }) => {
   const [show, setShow] = useState(false);
@@ -49,7 +51,7 @@ const PopupMenu = ({ anchorEl, menuClose, open, id }) => {
             menuClose();
           }}
         >
-          <GrFormView /> &nbsp;&nbsp; View
+          <AiFillEdit /> &nbsp;&nbsp; Edit
         </MenuItem>
         <MenuItem
           onClick={() => {
@@ -65,7 +67,7 @@ const PopupMenu = ({ anchorEl, menuClose, open, id }) => {
         show={show}
         onHide={handleClose}
         title={"View Question"}
-        body={<ViewAlbum id={id} />}
+        body={<EditAlbumForm id={id} />}
       />
     </div>
   );
