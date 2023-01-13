@@ -4,9 +4,9 @@ import axios from "axios";
 import Button from "../components/button/Button";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { BsThreeDots } from "react-icons/bs";
-// import Popupform from "../components/popup/Popupform";
-import PopupMemu from "../components/PopupMemu";
-// import AddQuestionForm from "../components/popup/AddQuestionForm";
+import Popupform from "../components/popup/Popupform";
+import PopupMenu from "../components/PopupMenu";
+import AddAlbumForm from "../components/popup/AddAlbumForm";
 import "./AlbumManager.css";
 
 const AlbumManager = () => {
@@ -166,7 +166,7 @@ const AlbumManager = () => {
               aria-expanded={open ? "true" : undefined}
               onClick={(event, id) => handleClick(event, params.row.id)}
             />
-            <PopupMemu
+            <PopupMenu
               anchorEl={anchorEl}
               menuClose={menuClose}
               open={open}
@@ -219,12 +219,12 @@ const AlbumManager = () => {
         <span>@ Print Policy | Terms of Service | Help Center</span>
       </div>
 
-      {/* <Popupform
+      <Popupform
         show={show}
         onHide={handleClose}
         title={"Add New Question"}
-        body={<AddQuestionForm onHide={handleClose} />}
-      /> */}
+        body={<AddAlbumForm onHide={handleClose} />}
+      />
       <br />
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import "bootstrap/dist/css/bootstrap.min.css";
-//import axios from "axios";
+import axios from "axios";
 import AlbumManager from "./pages/AlbumManager";
 
 const App = () => {
